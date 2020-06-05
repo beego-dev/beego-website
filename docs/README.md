@@ -1,7 +1,7 @@
 ---
 home: true
 actionText: 快速上手 →
-actionLink: /example/
+actionLink: /document/
 heroText: BeegoExample
 tagline: 快速学习GO，快速学习Beego！
 sidebar: auto
