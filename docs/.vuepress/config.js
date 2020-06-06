@@ -34,10 +34,6 @@ module.exports = {
           {
             text: 'Beego',
             link: 'https://github.com/astaxie/beego'
-          }, 
-          {
-            text: 'i2eco',
-            link: 'https://i2eco.com/awesome'
           }
       ]
       },
