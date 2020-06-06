@@ -30,21 +30,33 @@ module.exports = {
       },
       {
         text: '了解更多',
-        items: [{
-          text: 'Beego',
-          link: 'https://github.com/astaxie/beego'
-        }, ]
+        items: [
+          {
+            text: 'Beego',
+            link: 'https://github.com/astaxie/beego'
+          }, 
+          {
+            text: 'i2eco',
+            link: 'https://i2eco.com/awesome'
+          }
+      ]
       },
     ],
-    displayAllHeaders: true,
+    displayAllHeaders: false,
     activeHeaderLinks: true, 
     sidebar: {
       '/document/': [
         '',     /* Readme */
         'httpserver',
-        'orm'
+        'orm',
+        'cache',
+        'captcha',
+        'config',
+        'httplib',
+        'toolbox'
       ],
     },
+    sidebarDepth: 2,
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: 'https://github.com/beego-dev/beego-example',
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
