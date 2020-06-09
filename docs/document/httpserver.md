@@ -119,7 +119,341 @@ func (ctrl *MainController) Any()  {
 	_ = ctrl.Render()
 }
 ```
+## Controller 
+### 获取 HTTP 请求参数
+#### Query
+```go
+package main
 
+ import (
+ 	"github.com/astaxie/beego"
+ )
+
+ func main() {
+
+ 	ctrl := &MainController{}
+
+ 	// we register the path / to &MainController
+ 	// if we don't pass methodName as third param
+ 	// beego will use the default mappingMethods
+ 	// GET http://localhost:8080  -> Get()
+ 	// POST http://localhost:8080 -> Post()
+ 	// ...
+ 	beego.Router("/", ctrl)
+
+ 	beego.Run()
+ }
+
+ // MainController:
+ // The controller must implement ControllerInterface
+ // Usually we extends beego.Controller
+ type MainController struct {
+ 	beego.Controller
+ }
+
+ // address: http://localhost:8080 GET
+ func (ctrl *MainController) Get() {
+
+ 	name := ctrl.GetString("name")
+ 	if name == "" {
+ 		ctrl.Ctx.WriteString("Hello World")
+ 		return
+ 	}
+ 	ctrl.Ctx.WriteString("Hello " + name)
+ }
+```
+##### Data-Binding
+```go
+package main
+
+ import (
+ 	"fmt"
+
+ 	"github.com/astaxie/beego"
+ )
+
+ func main() {
+
+ 	ctrl := &MainController{}
+
+ 	// we register the path / to &MainController
+ 	// if we don't pass methodName as third param
+ 	// beego will use the default mappingMethods
+ 	// GET http://localhost:8080  -> Get()
+ 	// POST http://localhost:8080 -> Post()
+ 	// ...
+ 	beego.Router("/", ctrl)
+
+ 	beego.Run()
+ }
+
+ // MainController:
+ // The controller must implement ControllerInterface
+ // Usually we extends beego.Controller
+ type MainController struct {
+ 	beego.Controller
+ }
+
+ //curl --location --request GET 'localhost:8080/?id=123&isok=true&ft=1.2&ol[0]=1&ol[1]=2&ul[]=str&ul[]=array&user.Name=astaxie'
+
+ // address: http://localhost:8080 GET
+ func (ctrl *MainController) Get() {
+
+ 	var id int
+ 	_ = ctrl.Ctx.Input.Bind(&id, "id") //id ==123
+ 	fmt.Println(id)
+
+ 	var isok bool
+ 	_ = ctrl.Ctx.Input.Bind(&isok, "isok") //isok ==true
+ 	fmt.Println(isok)
+
+ 	var ft float64
+ 	_ = ctrl.Ctx.Input.Bind(&ft, "ft") //ft ==1.2
+ 	fmt.Println(ft)
+
+ 	ol := make([]int, 0, 2)
+ 	_ = ctrl.Ctx.Input.Bind(&ol, "ol") //ol ==[1 2]
+ 	fmt.Println(ol)
+
+ 	ul := make([]string, 0, 2)
+ 	_ = ctrl.Ctx.Input.Bind(&ul, "ul") //ul ==[str array]
+ 	fmt.Println(ul)
+
+ 	user := struct{ Name string }{}
+ 	_ = ctrl.Ctx.Input.Bind(&user, "user") //user =={Name:"astaxie"}
+ 	fmt.Println(user)
+ }
+```
+#### Router params
+```go
+package main
+
+ import (
+ 	"github.com/astaxie/beego"
+ )
+
+ func main() {
+
+ 	ctrl := &MainController{}
+
+ 	// we register the path / to &MainController
+ 	// if we don't pass methodName as third param
+ 	// beego will use the default mappingMethods
+ 	// GET http://localhost:8080  -> Get()
+ 	// POST http://localhost:8080 -> Post()
+ 	// ...
+ 	beego.Router("/:id", ctrl)
+
+ 	beego.Run()
+ }
+
+ // MainController:
+ // The controller must implement ControllerInterface
+ // Usually we extends beego.Controller
+ type MainController struct {
+ 	beego.Controller
+ }
+
+ //curl --location --request GET 'localhost:8080/123'
+
+ // address: http://localhost:8080 GET
+ func (ctrl *MainController) Get() {
+
+ 	id := ctrl.Ctx.Input.Param(":id")
+
+ 	ctrl.Ctx.WriteString("Your router param ID is:" + id)
+ }
+```
+
+#### Form Data
+```go
+package main
+
+ import (
+ 	"github.com/astaxie/beego"
+ )
+
+ func main() {
+
+ 	ctrl := &MainController{}
+
+ 	// we register the path / to &MainController
+ 	// if we don't pass methodName as third param
+ 	// beego will use the default mappingMethods
+ 	// GET http://localhost:8080  -> Get()
+ 	// POST http://localhost:8080 -> Post()
+ 	// ...
+ 	beego.Router("/", ctrl)
+
+ 	beego.Run()
+ }
+
+ // MainController:
+ // The controller must implement ControllerInterface
+ // Usually we extends beego.Controller
+ type MainController struct {
+ 	beego.Controller
+ }
+
+ type user struct {
+ 	Name     string `form:"name"`
+ 	Password string `form:"password" json:"custom_password"`
+ }
+
+ //curl --location --request POST 'localhost:8080/' \
+ //--form 'name=test' \
+ //--form 'password=1234'
+
+ // address: http://localhost:8080 Post
+ func (ctrl *MainController) Post() {
+ 	input := user{}
+
+ 	if err := ctrl.ParseForm(&input); err != nil {
+ 		ctrl.Ctx.WriteString(err.Error())
+ 		return
+ 	}
+ 	ctrl.Data["json"] = input
+ 	ctrl.ServeJSON()
+ }
+```
+
+#### body
+```go
+package main
+
+ import (
+ 	"encoding/json"
+
+ 	"github.com/astaxie/beego"
+ )
+
+ func main() {
+
+ 	ctrl := &MainController{}
+
+ 	beego.BConfig.CopyRequestBody = true
+
+ 	// we register the path / to &MainController
+ 	// if we don't pass methodName as third param
+ 	// beego will use the default mappingMethods
+ 	// GET http://localhost:8080  -> Get()
+ 	// POST http://localhost:8080 -> Post()
+ 	// ...
+ 	beego.Router("/", ctrl)
+
+ 	beego.Run()
+ }
+
+ // MainController:
+ // The controller must implement ControllerInterface
+ // Usually we extends beego.Controller
+ type MainController struct {
+ 	beego.Controller
+ }
+
+ type user struct {
+ 	Name     string                 `json:"name"`
+ 	Password string                 `json:"password"`
+ 	Metadata map[string]interface{} `json:"metadata,omitempty"`
+ }
+ //curl --location --request POST 'localhost:8080/' \
+ //--header 'Content-Type: application/json' \
+ //--data-raw '{"name":"Beeadmin","password":"1234","metadata":{"phone":"12423434"}}'
+
+ // address: http://localhost:8080 Post
+ func (ctrl *MainController) Post() {
+ 	input := user{}
+
+ 	if err := json.Unmarshal(ctrl.Ctx.Input.RequestBody, &input); err != nil {
+ 		ctrl.Data["json"] = err.Error()
+ 	}
+
+ 	ctrl.Data["json"] = input
+ 	ctrl.ServeJSON()
+ }
+```
+
+
+### 校验参数
+```go
+package main
+
+ import (
+ 	"encoding/json"
+ 	"strings"
+
+ 	"github.com/astaxie/beego/validation"
+
+ 	"github.com/astaxie/beego"
+ )
+
+ func main() {
+
+ 	ctrl := &MainController{}
+
+ 	beego.BConfig.CopyRequestBody = true
+
+ 	// we register the path / to &MainController
+ 	// if we don't pass methodName as third param
+ 	// beego will use the default mappingMethods
+ 	// GET http://localhost:8080  -> Get()
+ 	// POST http://localhost:8080 -> Post()
+ 	// ...
+ 	beego.Router("/", ctrl)
+
+ 	beego.Run()
+ }
+
+ // MainController:
+ // The controller must implement ControllerInterface
+ // Usually we extends beego.Controller
+ type MainController struct {
+ 	beego.Controller
+ }
+
+ type user struct {
+ 	Name     string                 `json:"name"valid:"Required;Match(/^Bee.*/)"`
+ 	Password string                 `json:"password"`
+ 	Metadata map[string]interface{} `json:"metadata,omitempty"`
+ }
+
+ // 如果你的 struct 实现了接口 validation.ValidFormer
+ // 当 StructTag 中的测试都成功时，将会执行 Valid 函数进行自定义验证
+ func (u *user) Valid(v *validation.Validation) {
+ 	if strings.Index(u.Name, "admin") != -1 {
+ 		// 通过 SetError 设置 Name 的错误信息，HasErrors 将会返回 true
+ 		v.SetError("Name", "名称里不能含有 admin")
+ 	}
+ }
+
+ //curl --location --request POST 'localhost:8080/' \
+ //--header 'Content-Type: application/json' \
+ //--data-raw '{"name":"Beeadmin","password":"1234","metadata":{"phone":"12423434"}}'
+
+ // address: http://localhost:8080 Post
+ func (ctrl *MainController) Post() {
+ 	valid := validation.Validation{}
+ 	input := user{}
+
+ 	if err := json.Unmarshal(ctrl.Ctx.Input.RequestBody, &input); err != nil {
+ 		ctrl.Data["json"] = err.Error()
+ 	}
+ 	b, err := valid.Valid(&input)
+ 	if err != nil {
+ 		// handle error
+ 	}
+ 	errs := make(map[string]string)
+ 	if !b {
+ 		// validation does not pass
+ 		// blabla...
+ 		for _, err := range valid.Errors {
+ 			errs[err.Key] = err.Message
+ 		}
+ 	}
+ 	ctrl.Data["json"] = errs
+ 	ctrl.ServeJSON()
+ }
+```
 ## Cookie
 ```go
 import (

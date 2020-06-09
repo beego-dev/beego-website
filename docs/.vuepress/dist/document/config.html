@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Config | Beego</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    
+    <meta name="description" content="Beego Example">
+    <meta name="keywords" content="Go,golang,beego">
+    <link rel="preload" href="/assets/css/0.styles.c61efb9c.css" as="style"><link rel="preload" href="/assets/js/app.b629ec1f.js" as="script"><link rel="preload" href="/assets/js/2.0a557829.js" as="script"><link rel="preload" href="/assets/js/10.f7775e7b.js" as="script"><link rel="prefetch" href="/assets/js/11.733dcee5.js"><link rel="prefetch" href="/assets/js/12.0309173e.js"><link rel="prefetch" href="/assets/js/13.6bd86bca.js"><link rel="prefetch" href="/assets/js/14.7fc96369.js"><link rel="prefetch" href="/assets/js/15.b889342b.js"><link rel="prefetch" href="/assets/js/16.b565309c.js"><link rel="prefetch" href="/assets/js/3.661c35b5.js"><link rel="prefetch" href="/assets/js/4.fadff749.js"><link rel="prefetch" href="/assets/js/5.51580496.js"><link rel="prefetch" href="/assets/js/6.9af814f4.js"><link rel="prefetch" href="/assets/js/7.a0debc6c.js"><link rel="prefetch" href="/assets/js/8.e7e210e7.js"><link rel="prefetch" href="/assets/js/9.30edcf69.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c61efb9c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Beego</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/document/" class="nav-link router-link-active">
+  文档
+</a></div><div class="nav-item"><a href="/join/" class="nav-link">
+  加入我们
+</a></div><div class="nav-item"><a href="/awesome/" class="nav-link">
+  awesome
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="了解更多" class="dropdown-title"><span class="title">了解更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/astaxie/beego" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Beego
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/beego-dev/beego-example" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/document/" class="nav-link router-link-active">
+  文档
+</a></div><div class="nav-item"><a href="/join/" class="nav-link">
+  加入我们
+</a></div><div class="nav-item"><a href="/awesome/" class="nav-link">
+  awesome
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="了解更多" class="dropdown-title"><span class="title">了解更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/astaxie/beego" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Beego
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/beego-dev/beego-example" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/document/" aria-current="page" class="sidebar-link">beego-example</a></li><li><a href="/document/httpserver.html" class="sidebar-link">Http server</a></li><li><a href="/document/orm.html" class="sidebar-link">Orm</a></li><li><a href="/document/cache.html" class="sidebar-link">Cache</a></li><li><a href="/document/captcha.html" class="sidebar-link">Utils</a></li><li><a href="/document/config.html" aria-current="page" class="active sidebar-link">Config</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/document/config.html#自动加载" class="sidebar-link">自动加载</a></li><li class="sidebar-sub-header"><a href="/document/config.html#手动加载" class="sidebar-link">手动加载</a></li><li class="sidebar-sub-header"><a href="/document/config.html#引用" class="sidebar-link">引用</a></li></ul></li><li><a href="/document/httplib.html" class="sidebar-link">Httplib</a></li><li><a href="/document/toolbox.html" class="sidebar-link">Toolbox</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="config"><a href="#config" class="header-anchor">#</a> Config</h1> <p>beego 提供了可以用来解析配置文件的工具库，可以用来解析配置文件当中的内容，目前支持四种文件格式：ini、json、xml、yaml。并且支持自动加载配置文件的功能。</p> <h2 id="自动加载"><a href="#自动加载" class="header-anchor">#</a> 自动加载</h2> <p>如果使用自动加载，beego 会去 conf 文件夹下寻找配置文件自动加载。</p> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/astaxie/beego&quot;</span>
+	<span class="token boolean">_</span> <span class="token string">&quot;github.com/astaxie/beego/config&quot;</span>
+	<span class="token string">&quot;github.com/astaxie/beego/logs&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	logs<span class="token punctuation">.</span><span class="token function">Info</span><span class="token punctuation">(</span><span class="token string">&quot;auto load config name is&quot;</span><span class="token punctuation">,</span>beego<span class="token punctuation">.</span>AppConfig<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h2 id="手动加载"><a href="#手动加载" class="header-anchor">#</a> 手动加载</h2> <div class="language-go line-numbers-mode"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;github.com/astaxie/beego&quot;</span>
+	<span class="token string">&quot;github.com/astaxie/beego/logs&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+	ConfigFile <span class="token operator">=</span> <span class="token string">&quot;./app.conf&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	err <span class="token operator">:=</span> beego<span class="token punctuation">.</span><span class="token function">LoadAppConfig</span><span class="token punctuation">(</span><span class="token string">&quot;ini&quot;</span><span class="token punctuation">,</span> ConfigFile<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		logs<span class="token punctuation">.</span><span class="token function">Critical</span><span class="token punctuation">(</span><span class="token string">&quot;An error occurred:&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	logs<span class="token punctuation">.</span><span class="token function">Info</span><span class="token punctuation">(</span><span class="token string">&quot;load config name is&quot;</span><span class="token punctuation">,</span>beego<span class="token punctuation">.</span>AppConfig<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h2 id="引用"><a href="#引用" class="header-anchor">#</a> 引用</h2> <p>示例代码地址：<a href="https://github.com/beego-dev/beego-example/tree/master/config" target="_blank" rel="noopener noreferrer">https://github.com/beego-dev/beego-example/tree/master/config<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/beego-dev/beego-example/edit/master/docs/document/config.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2020-06-06 16:30:30</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/document/captcha.html" class="prev">
+        Utils
+      </a></span> <span class="next"><a href="/document/httplib.html">
+        Httplib
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.b629ec1f.js" defer></script><script src="/assets/js/2.0a557829.js" defer></script><script src="/assets/js/10.f7775e7b.js" defer></script>
+  </body>
+</html>
